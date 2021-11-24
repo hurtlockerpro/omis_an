@@ -1,0 +1,101 @@
+:root {
+    --border-color: #4d6a8d;
+}
+
+
+.outer{
+    width: 210px;
+    height: 275px;
+    /* border: 7px solid #4d6a8d; */
+    border-color: var(--border-color);
+    border-width: 7px;
+    border-style: solid;
+
+    border-radius: 25px;
+}
+
+.inner {
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    width: 91%;
+    height: 92%;
+    margin: 9px;
+    text-align: center;
+    position: relative;
+}
+
+.inner img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+
+    position: absolute;
+    top: -18px;
+    left: 53px;
+}
+
+.inner form {
+    position: relative;
+    top: 80px;
+}
+
+.inner > div {
+    position: relative;
+    top: 100px;
+}
+
+/* FORM ELEMENTS */ 
+
+.inner input[type="email"], .inner input[type="password"]{
+    background-color: var(--border-color);
+    color: white;
+    border-radius: 5px;
+    height: 25px;
+    border: 0;
+    outline: none;
+}
+
+.inner input[type="button"] {
+    width: 87%;
+    border: 2px solid var(--border-color);
+    color: var(--border-color);
+    text-transform: uppercase;
+    height: 28px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.inner > form input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* BOTTOM ROW */
+
+.inner > div {
+    font-size: 9px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.inner > div label{
+    float: left;
+    color: var(--border-color);
+    text-transform: uppercase;
+    position: absolute;
+    top: -4px;
+    left: 0px;
+}
+
+.inner > div a {
+    float: right;
+    text-transform: uppercase;
+    color: var(--border-color);
+    text-decoration: none;
+}
+
+.inner input[type="checkbox"] {
+    height: 9px;
+}
+
