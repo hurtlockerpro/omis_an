@@ -2,6 +2,11 @@
     --border-color: #4d6a8d;
 }
 
+body {
+    background: rgb(76,68,208);
+    background: radial-gradient(circle, rgba(76,68,208,1) 0%, rgba(94,198,64,1) 36%, rgba(186,191,59,1) 67%, rgba(224,57,181,1) 100%);
+}
+
 
 .outer{
     width: 210px;
@@ -99,3 +104,85 @@
     height: 9px;
 }
 
+/* INPUT ICON POSITION FIRST VERSION */
+
+#firstVersionIcon {
+    position: relative;
+}
+
+#firstVersionIcon .fa-user {
+    position: absolute;
+    left: 16px;
+    top: 1px;
+    color: red;
+    /* z-index: -1; */
+}
+
+#firstVersionIcon input {
+    padding-left: 35px;
+    /* z-index: 1; */
+}
+
+/*  pseudo classes */ 
+
+a:hover{
+    color: red;
+    text-decoration: none;
+}
+
+/* , a:visited, a:active */
+a:link {
+    color: green;
+}
+
+ul li:first-child
+{
+    background-color: aquamarine;
+}
+
+ul li:last-child{
+    background-color: cornflowerblue;
+}
+
+ul li:nth-child(3){
+    font-style: italic;
+    color: darkgoldenrod;
+}
+
+
+.quote {
+    border: 1px solid gray;
+}
+
+.quote::before {
+    content: 'before';
+    border: 1px solid red;
+}
+
+.quote::after {
+    content: 'after';
+    border: 1px solid red;
+    
+    display: block;
+    width: 50px;
+    height: 75px;
+}
+
+/* INPUT ICON POSITION SECOND VERSION */
+
+input[type=password]{
+    padding-left: 25px;
+} 
+
+
+#password::before{
+    content: "\f023";
+    color: white;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+
+    position: relative;
+    top: 2px;
+    left: 24px;
+
+} 
