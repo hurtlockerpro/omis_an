@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,900;1,500;1,900&display=swap');
+
+:root{
+    --main-color: #87d83d;
+    --nav-bg-color: #333333;
+
+}
+
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /*font-weight: 800; */ /* 100-300, 300-600, 600-900 */
+    /* font-style: italic;*/
+}
+
+
+.row_1{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 40px;
+    color:white;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.row_1 > a, .row_1 ul li a {
+    color: white;
+    text-decoration: none;    
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.row_1 a[href ^= "mailto:"]::before {
+    content: '\f0e0';
+    padding-right: 4px;
+}
+
+.row_1 a[href ^= "tel:"]::before {
+    content: '\f879';
+    padding-right: 4px;
+}
+
+.row_1 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 30%;
+    float: right;
+}
+
+.row_1 > ul > li, .row_2 ul li  {
+    display: inline-block;
+}
+
+.row_1 ul .iconOffer::before {
+    content: '\f06b';
+    padding-right: 4px;
+}
+
+.row_1 ul .iconLogin::before {
+    content: '\f508';
+    padding-right: 4px;
+}
+
+.row_1 ul .iconSignUp::before {
+    content: '\f044';
+    padding-right: 4px;
+}
+
+.row_1 ul li {
+    border-left: 1px solid green;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.row_1 ul li:first-child { 
+    border-left: 0; 
+}
+
+/**/
+/* HEADER ROW 2 */
+/**/
+
+.row_2 {
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.row_2 img {
+    width: 150px;
+}
+
+.row_2 ul .iconCart::before {
+    content: '\f07a';
+    padding-right: 4px;
+}
+
+.row_2 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    float: right;
+}
+
+.row_2 > a, .row_2 ul li a {
+    color: black;
+    text-decoration: none;    
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    display: block;
+    width: 100px;
+    height: 25px;
+    padding: 7px;
+    border: 2px solid white;
+}
+
+.row_2 a.active, .row_2 ul li a:hover {
+    border: 2px solid var(--main-color);
+    border-radius: 17px;
+}
+
+/**/
+/* HEADER ROW 3 */
+/**/
+
+.row_3 {
+    background-color: var(--nav-bg-color);
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.row_3 ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.row_3 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    height: 35px;
+}
+
+.row_3 > a, .row_3 ul li a {
+    color: white;
+    text-decoration: none;    
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    display: block;
+    width: 100px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row_3 a.active, .row_3 ul li a:hover {
+    background-color: var(--main-color);
+}
+
+
+/**/
+/* HEADER ROW 4 - SLIDER */
+/**/
+
+.row_4.slider {
+    background: url('../img/mountain.jpg');
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+}
