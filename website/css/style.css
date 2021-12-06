@@ -3,7 +3,9 @@
 :root{
     --main-color: #87d83d;
     --nav-bg-color: #333333;
-
+    --price-box-1-color: #87d83d;
+    --price-box-2-color: #111baf;
+    --price-box-3-color: #e45b0c;
 }
 
 
@@ -15,7 +17,7 @@ body{
 }
 
 
-.row_1{
+header .row_1{
     background-color: var(--main-color);
     width: 100%;
     height: 40px;
@@ -25,24 +27,24 @@ body{
     padding-right: 25px;
 }
 
-.row_1 > a, .row_1 ul li a {
+header .row_1 > a, header .row_1 ul li a {
     color: white;
     text-decoration: none;    
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
 
-.row_1 a[href ^= "mailto:"]::before {
+header .row_1 a[href ^= "mailto:"]::before {
     content: '\f0e0';
     padding-right: 4px;
 }
 
-.row_1 a[href ^= "tel:"]::before {
+header .row_1 a[href ^= "tel:"]::before {
     content: '\f879';
     padding-right: 4px;
 }
 
-.row_1 ul {
+header .row_1 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -50,32 +52,32 @@ body{
     float: right;
 }
 
-.row_1 > ul > li, .row_2 ul li  {
+header .row_1 > ul > li, header .row_2 ul li  {
     display: inline-block;
 }
 
-.row_1 ul .iconOffer::before {
+header .row_1 ul .iconOffer::before {
     content: '\f06b';
     padding-right: 4px;
 }
 
-.row_1 ul .iconLogin::before {
+header .row_1 ul .iconLogin::before {
     content: '\f508';
     padding-right: 4px;
 }
 
-.row_1 ul .iconSignUp::before {
+header .row_1 ul .iconSignUp::before {
     content: '\f044';
     padding-right: 4px;
 }
 
-.row_1 ul li {
+header .row_1 ul li {
     border-left: 1px solid green;
     padding-left: 10px;
     padding-right: 5px;
 }
 
-.row_1 ul li:first-child { 
+header .row_1 ul li:first-child { 
     border-left: 0; 
 }
 
@@ -83,22 +85,22 @@ body{
 /* HEADER ROW 2 */
 /**/
 
-.row_2 {
+header .row_2 {
     padding-top: 25px;
     padding-left: 25px;
     padding-right: 25px;
 }
 
-.row_2 img {
+header .row_2 img {
     width: 150px;
 }
 
-.row_2 ul .iconCart::before {
+header .row_2 ul .iconCart::before {
     content: '\f07a';
     padding-right: 4px;
 }
 
-.row_2 ul {
+header .row_2 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -106,7 +108,7 @@ body{
     float: right;
 }
 
-.row_2 > a, .row_2 ul li a {
+header .row_2 > a, .row_2 ul li a {
     color: black;
     text-decoration: none;    
     font-family: 'Font Awesome 5 Free';
@@ -118,7 +120,7 @@ body{
     border: 2px solid white;
 }
 
-.row_2 a.active, .row_2 ul li a:hover {
+header .row_2 a.active, header .row_2 ul li a:hover {
     border: 2px solid var(--main-color);
     border-radius: 17px;
 }
@@ -127,7 +129,7 @@ body{
 /* HEADER ROW 3 */
 /**/
 
-.row_3 {
+header .row_3 {
     background-color: var(--nav-bg-color);
     height: 35px;
 
@@ -136,14 +138,14 @@ body{
 
 }
 
-.row_3 ul {
+header .row_3 ul {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
-.row_3 ul {
+header .row_3 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -151,7 +153,7 @@ body{
     height: 35px;
 }
 
-.row_3 > a, .row_3 ul li a {
+header .row_3 > a, header .row_3 ul li a {
     color: white;
     text-decoration: none;    
     font-family: 'Font Awesome 5 Free';
@@ -164,7 +166,7 @@ body{
     align-items: center;
 }
 
-.row_3 a.active, .row_3 ul li a:hover {
+header .row_3 a.active, header .row_3 ul li a:hover {
     background-color: var(--main-color);
 }
 
@@ -173,10 +175,221 @@ body{
 /* HEADER ROW 4 - SLIDER */
 /**/
 
-.row_4.slider {
+header .row_4.slider {
     background: url('../img/mountain.jpg');
     height: 250px;
     background-repeat: no-repeat;
     background-position: left;
     background-size: cover;
+}
+
+/* ANIMATION */ 
+
+#parentAnimation {
+    border: 1px solid gray;
+    display: block;
+    width: 500px;
+    height: 250px;
+}
+
+#square {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 2px double green;
+    background-color: #87d83d;
+    position: absolute;
+    animation-name: myMotion;
+    animation-duration: 2s;
+}
+
+@keyframes myMotion {
+    0%{
+        left: 0px;
+        transform: rotateZ(0deg);
+        background-color: #87d83d;
+    }
+    20%{
+        background-color: aqua;
+    }
+    50%{
+        background-color: bisque;
+    }
+    100%{
+        left: 500px;
+        transform: rotateZ(360deg);
+        background-color: #87d83d;
+    }
+}
+
+/* PRICE BOX */
+section {
+    width: 100%;
+    background-color: #f5f5f5;
+    
+    text-align: center;
+}
+
+section h1 {
+    text-transform: uppercase;
+}
+
+.section_1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+.priceBox {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1px solid gray;
+}
+.priceBox .row_1{
+    background-image: url('../img/server-room.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: block;
+    height: 75px;
+    /*filter: hue-rotate(293deg);*/
+    color: white;
+    position: relative;
+}
+.priceBox .row_1::before{
+    content: '';
+    filter: opacity(0.7);
+    z-index: 2;
+
+    display: block;
+    width: 100%;
+    height: 75px;
+    position: absolute;
+}
+
+.priceBox .row_1 h4, .priceBox .row_1 h6{
+    position: relative;
+    text-align: center;
+}
+
+.priceBox .row_1 h4 {
+    z-index: 5;
+    margin-bottom: 0;
+}
+
+.priceBox .row_1 h6{
+    z-index: 5;
+    margin-top: 0;
+}
+
+
+.priceBox .row_2{
+    text-align: center;
+    background-color: white;
+    font-size: 12px;
+    padding: 15px;
+}
+
+
+.priceBox .row_3{
+    background-color: #e8e8e8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.priceBox .row_3 .price {
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    position: relative;
+}
+
+.priceBox .row_3 .price::before{
+    content: '$';
+    font-size: 36px;
+    position: relative;
+    top: -10px;
+    margin-right: 5px;
+}
+
+.priceBox .row_3 .price::after{
+    content: '/mo';
+    color: black;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+
+.priceBox .row_4{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.priceBox .row_4 a, .priceBox .row_4 a.active {
+    color: black;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    height: 20px;
+    padding: 7px;
+    border: 2px solid var(--price-box-1-color);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.priceBox .row_4 a:hover {
+    background-color: var(--price-box-1-color);
+    color: white;
+}
+
+.priceBoxGreen::before {
+    background-color: var(--price-box-1-color);
+}
+.priceGreen, .priceGreen::before{
+    color: var(--price-box-1-color);
+} 
+.priceBoxBlue::before {
+    background-color: var(--price-box-2-color);
+}
+.priceBlue, .priceBlue::before{
+    color: var(--price-box-2-color);
+} 
+.priceBoxOrange::before{
+    background-color: var(--price-box-3-color);
+}
+.priceOrange, .priceOrange::before{
+    color: var(--price-box-3-color);
+} 
+
+
+/* slide between */ 
+
+.slide {
+    display: block;
+    margin-top: 25px;
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.slide::before {
+    content: '';
+    background-image: url('../img/server-room.jpg');
+    filter: blur(5px) brightness(0.4);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    z-index: -1;
+}
+
+.slide h1, .slide p {
+    z-index: 5;
+    color: white;
 }
