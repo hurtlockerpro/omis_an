@@ -1,0 +1,41 @@
+body {
+    font-size: 16px;
+}
+
+
+*{
+    /* border:1px solid gray; */
+    font-size: 1em;
+}
+
+.block2 i {
+    color: white;
+    font-size: 2em;
+}
+
+.skill {
+    border: 0.2em solid white;
+    display: block;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+}
+
+.skillProgress {
+
+}
+.active {
+    display: block;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid white;
+}
+.notactive {
+    display: block;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    border: 2px solid white;
+}
