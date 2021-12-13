@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap');
 body {
     font-size: 16px;
 }
@@ -38,4 +39,124 @@ body {
     height: 0.4em;
     border-radius: 50%;
     border: 2px solid white;
+}
+
+/* TITLE */
+
+#cvTitle {
+    background: rgb(33, 31, 170);
+    position: relative;
+    display: block;
+    height: 2em;
+    margin-bottom: 2em;
+}
+
+#cvTitle::before {
+    content: 'johnson doe';
+    color: rgb(33, 31, 170);
+    background: #fff;
+    text-transform: uppercase;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 1em;
+    font-family: 'Oswald', sans-serif;
+}
+
+#cvTitle::after {
+    content: 'creative designer';
+    text-transform: uppercase;
+    color: rgb(82, 82, 82);
+    position: relative;
+    left: 0px;
+    top: 1.2em;
+    font-size: 1.5em;
+    font-weight: 400;
+    font-family: 'Oswald', sans-serif;
+    padding-left: 15px;
+}
+/*
+.rowWrapper {
+    width: 100%;
+}
+.leftSide {
+    width: 70%;
+    float: left;
+}
+.rightSide {
+    background-color: rgb(33, 31, 170);
+    width: 30%;
+    float: right;
+}
+
+.subRow {
+    width: 100%;
+}
+*/
+
+/* row 2 */ 
+
+.photoRow {
+    color: #fff;
+}
+
+.photoRow .quote {
+    list-style-type: none;
+    position: relative;
+}
+.photoRow .quote li {
+    display: inline;
+    color: rgb(94, 94, 170);
+}
+
+.photoRow .quote .icon {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.photoRow .quote .icon > svg {
+    width: 2em;
+    height: 3em;
+}
+
+.photoRow .quote li:nth-child(2) {
+    text-transform: uppercase;
+    color: rgb(94, 94, 170);
+}
+
+/* PROGRESS BAR */
+
+.progress {
+    margin: 0.4em;
+    border-radius: 0;
+}
+
+.progress-bar{
+    text-transform: uppercase;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.progress > span {
+    font-weight: bold;
+    padding-left: 1em;
+}
+
+/* bottom row cols */
+
+.innerColLeft h1, .innerColRight h1 {
+    background-color: rgb(42, 28, 82);
+    color: #fff;
+    font-size: 0.85em;
+
 }
