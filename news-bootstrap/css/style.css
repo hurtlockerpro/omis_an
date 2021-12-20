@@ -30,6 +30,21 @@ body {
 @media only screen and (min-width: 600px) {
     .thumb img {
         max-width: 9em !important;
-        /* background-size: cover; */
+    }
+    .img-thumbnail {
+        max-width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .newsItemSmall {
+        position: relative;
+    }
+    .newsItemSmall h1{
+        position: absolute;
+        bottom: .8em;
+        left: 0.8em;
+        font-size: 1em;
+        color: black;
     }
 }
