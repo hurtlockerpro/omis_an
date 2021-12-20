@@ -1,0 +1,35 @@
+body {
+    min-height: 100vh;
+}
+
+.newsItem {
+    position: relative;
+}
+
+.newsItem img {}
+
+.newsItem h1{
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-size: 2em;
+    color: white;
+}
+
+.newsItem .badge {
+    position: absolute;
+    top: .6em;
+    right: .6em;
+}
+
+.thumb {
+    /*max-height: calc(336px / 3);*/
+    margin: .3em;
+}
+
+@media only screen and (min-width: 600px) {
+    .thumb img {
+        max-width: 9em !important;
+        /* background-size: cover; */
+    }
+}
