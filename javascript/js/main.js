@@ -213,15 +213,39 @@ let cols = 10
 
 let table = generateTable()
 table.setAttribute('border', '1')
+/*
+table.classList.add('table')
+table.classList.add('table-dark')
+table.classList.add('table-striped')
+*/
+table.classList.add('table', 'table-dark', 'table-striped')
+    
+let headerRow = generateTableRow()
+
 for (let colIndex = 1; colIndex <= cols; colIndex++) {
     //console.log('col: ', colIndex)
     let row = generateTableRow()
+    
     for (let rowIndex = 1; rowIndex <= rows; rowIndex++) {
         console.log(rowIndex, '*', colIndex, '=', (rowIndex * colIndex))
+        if (colIndex == 1 && rowIndex == 1)
+        {
+            let th = generateTag('th', '')
+            th.setAttribute('scope', 'col')
+            headerRow.appendChild(th)
+        }
+        if(colIndex == 1)
+        {
+            // header
+            let th = generateTag('th', rowIndex)
+            th.setAttribute('scope', 'col')
+            headerRow.appendChild(th)
+        }
         //console.log(generateTableCell(rowIndex * colIndex).outerHTML)
         row.appendChild(generateTableCell(rowIndex * colIndex))
     }
     //console.log(row)
+    if(colIndex == 1) table.appendChild(headerRow)
     table.appendChild(row)
 }
 console.log(table.outerHTML)
@@ -231,9 +255,9 @@ console.log(table.outerHTML)
 let result = document.getElementById('multiplyTable')
 result.innerHTML = table.outerHTML
 
-function generateTag(tagName, data){
+function generateTag(tagName, data = undefined){
     let obj = document.createElement(tagName)
-    obj.innerHTML = data
+    if (typeof data != 'undefined') obj.innerHTML = data
     return obj
 }
 
