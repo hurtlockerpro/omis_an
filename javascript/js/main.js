@@ -211,19 +211,37 @@ Hello ${ 2 + 2 }
 let rows = 10
 let cols = 10
 
+let table = generateTable()
 for (let colIndex = 1; colIndex <= cols; colIndex++) {
     //console.log('col: ', colIndex)
+    let row = generateTableRow()
     for (let rowIndex = 1; rowIndex <= rows; rowIndex++) {
         console.log(rowIndex, '*', colIndex, '=', (rowIndex * colIndex))
+        //console.log(generateTableCell(rowIndex * colIndex).outerHTML)
+        row.appendChild(generateTableCell(rowIndex * colIndex))
     }
+    //console.log(row)
+    table.appendChild(row)
+}
+console.log(table.outerHTML)
+//document.body.innerText = 'Hello from javascript'
+document.body.innerHTML = '<b>Hello from javascript</b>'
+
+function generateTag(tagName, data){
+    let obj = document.createElement(tagName)
+    obj.innerHTML = data
+    return obj
 }
 
+function generateTable(data = undefined){
+    let table = document.createElement('table')
+    if (typeof data != 'undefined') table.innerHTML = data
+    return table
+}
 
-function generateTable(){}
-
-function generateTableRow(data){
+function generateTableRow(data = undefined){
     let tr = document.createElement('tr')
-    tr.innerHTML = data
+    if (typeof data != 'undefined') tr.innerHTML = data
     return tr
 }
 
@@ -240,7 +258,10 @@ function generateTableCell(data){
 
 // 1. return td object 
 let newCell = generateTableCell('new <b>cell</b>')
+newCell.style.color = 'green'
 // 2. generate row -> td object  
 let newRow = generateTableRow(newCell.outerHTML)
-//newCell.style.color = 'red'
+newRow.style.color = 'red'
 console.log(newRow)
+
+//console.log(generateTag('tr', newCell.outerHTML))
