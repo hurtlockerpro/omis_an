@@ -212,6 +212,7 @@ let rows = 10
 let cols = 10
 
 let table = generateTable()
+table.setAttribute('border', '1')
 for (let colIndex = 1; colIndex <= cols; colIndex++) {
     //console.log('col: ', colIndex)
     let row = generateTableRow()
@@ -225,7 +226,10 @@ for (let colIndex = 1; colIndex <= cols; colIndex++) {
 }
 console.log(table.outerHTML)
 //document.body.innerText = 'Hello from javascript'
-document.body.innerHTML = '<b>Hello from javascript</b>'
+//document.body.innerHTML = '<b>Hello from javascript</b>'
+
+let result = document.getElementById('multiplyTable')
+result.innerHTML = table.outerHTML
 
 function generateTag(tagName, data){
     let obj = document.createElement(tagName)
