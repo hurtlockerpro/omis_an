@@ -204,3 +204,43 @@ Hello ${ firstname },
 
 Hello ${ 2 + 2 }
 `)
+
+
+// multiply table
+
+let rows = 10
+let cols = 10
+
+for (let colIndex = 1; colIndex <= cols; colIndex++) {
+    //console.log('col: ', colIndex)
+    for (let rowIndex = 1; rowIndex <= rows; rowIndex++) {
+        console.log(rowIndex, '*', colIndex, '=', (rowIndex * colIndex))
+    }
+}
+
+
+function generateTable(){}
+
+function generateTableRow(data){
+    let tr = document.createElement('tr')
+    tr.innerHTML = data
+    return tr
+}
+
+function generateTableCell(data){
+
+    //return `<td>${ data }</td>`
+    let td = document.createElement('td')
+    //td.style.backgroundColor = 'red'
+    //td.style.fontSize = '14px'
+    td.innerText = data
+
+    return td
+}
+
+// 1. return td object 
+let newCell = generateTableCell('new <b>cell</b>')
+// 2. generate row -> td object  
+let newRow = generateTableRow(newCell.outerHTML)
+//newCell.style.color = 'red'
+console.log(newRow)
