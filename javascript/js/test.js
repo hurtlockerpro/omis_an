@@ -28,6 +28,30 @@ for (let index = 0; index < myDivs.length; index++) {
 
 function drawBall(radius){
     let newElement = document.createElement('div')
-    newElement.width = radius + 'px'
+        newElement.style.width = radius + 'px'
+        newElement.style.height = radius + 'px'
+        newElement.style.borderWidth = '1px'
+        newElement.style.borderStyle = 'solid'
+        newElement.style.borderColor = 'gray'
+        newElement.style.borderRadius = '50%'
 
+    return newElement
 }
+
+let snowman = document.getElementById('snowman')
+/*
+snowman.innerHTML = drawBall(150).outerHTML
+snowman.innerHTML += drawBall(100).outerHTML
+snowman.innerHTML += drawBall(50).outerHTML
+*/
+
+let firstBall = drawBall(150)
+firstBall.style.borderColor = 'red'
+firstBall.style.borderWidth = '3px'
+firstBall.style.backgroundColor = 'green'
+firstBall.innerText = 'this is ball!'
+
+snowman.appendChild(firstBall)
+
+snowman.appendChild(drawBall(100))
+snowman.appendChild(drawBall(50))
