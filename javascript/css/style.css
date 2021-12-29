@@ -2,3 +2,13 @@
     color: red;
     /* border: 1px solid gray; */
 }
+
+.redFont{
+    color: red;
+}
+
+#snowman {
+    width: 500px;
+    height: 500px;
+    border: 1px solid gray;
+}
