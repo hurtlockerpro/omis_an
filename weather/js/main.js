@@ -25,6 +25,7 @@ let city = document.getElementById('city')
 let description = document.getElementById('description')
 let btnSwitch = document.getElementById('flexSwitchCheckChecked')
 let unitLabel = document.getElementById('unitLabel')
+let icon = document.getElementById('icon')
 
 let settings = {
     url: 'https://api.openweathermap.org/data/2.5/weather',
@@ -32,7 +33,10 @@ let settings = {
     appid: 'e94a06c22c14c9ab3059f89372eb2541', // {API key}
     mode: 'json',  // xml and html
     units: 'metric' // standard, metric and imperial
-}    
+}  
+// icons  
+let imgUrl = 'http://openweathermap.org/img/wn/' // 10d@2x.png
+let iconsHtml = ''
 
 let generateUrl = () => {
     let url = settings.url
@@ -56,23 +60,32 @@ let getData = () => {
 
     let url = generateUrl()
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            
+            // status
+
+            return response.json()
+
+        })
         .then(data => {
             console.log(data.name)
 
             temp.innerText = data.main.temp
             city.innerText = data.name
             description.innerText = parseWeatherData(data.weather)
+            icon.innerHTML = iconsHtml
         }) 
 
 }
 
 function parseWeatherData(data){
     let description = ''
+    iconsHtml = ''
     if (data.length >= 1)
     {
         data.forEach(item => {
             description += item.main + ' ' + item.description
+            iconsHtml += generateIcon(item.icon)
         })
     }
     return description
@@ -90,6 +103,13 @@ btnSwitch.addEventListener('change', event => {
     }
     getData()
 })
+
+function generateIcon(iconCode){
+    let img = document.createElement('img')
+    img.src = imgUrl + iconCode + '@2x.png'
+
+    return img.outerHTML
+}
  
 //settings.q = 'New York'
 settings.units = 'metric'
