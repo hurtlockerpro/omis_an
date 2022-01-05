@@ -23,14 +23,15 @@ document.querySelector('button[type="button"]')
 let temp = document.getElementById('temp')
 let city = document.getElementById('city')
 let description = document.getElementById('description')
-let btnSwitch = document.getElementById('switch')
+let btnSwitch = document.getElementById('flexSwitchCheckChecked')
+let unitLabel = document.getElementById('unitLabel')
 
 let settings = {
     url: 'https://api.openweathermap.org/data/2.5/weather',
     q: 'Tallinn', // {city name}
     appid: 'e94a06c22c14c9ab3059f89372eb2541', // {API key}
     mode: 'json',  // xml and html
-    units: 'standart' // standard, metric and imperial
+    units: 'metric' // standard, metric and imperial
 }    
 
 let generateUrl = () => {
@@ -76,8 +77,22 @@ function parseWeatherData(data){
     }
     return description
 }
+
+btnSwitch.addEventListener('change', event => {
+    console.log(btnSwitch.checked)
+    if (btnSwitch.checked == true)
+    {
+        settings.units = 'metric'
+        unitLabel.innerText = 'metric'
+    } else {
+        settings.units = 'imperial'
+        unitLabel.innerText = 'imperial'
+    }
+    getData()
+})
  
 //settings.q = 'New York'
+settings.units = 'metric'
 console.log(generateUrl())
 
 getData()
