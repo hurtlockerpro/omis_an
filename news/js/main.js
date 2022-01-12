@@ -55,8 +55,10 @@ class News extends Url {
         this.newsCategory = document.getElementById('newsCategory')
         this.btnNewsSearch = document.getElementById('btnNewsSearch')
         this.btnNewsSearch.addEventListener('click', event => {
+            this.newsItems.innerHTML = '' 
             this.doSearch()
         })
+        this.newsItems = document.getElementById('newsItems')
     }
     /*
     color = ''
@@ -86,6 +88,22 @@ class News extends Url {
         if (this.#allNewsParsed.hasOwnProperty('status') && this.#allNewsParsed.status == 'ok') 
         {
             await this.fillSlides()
+            // all other news 
+            for (let index = 3; index < this.#allNewsParsed.articles.length; index++) {
+                const currentNews = this.#allNewsParsed.articles[index];
+                
+                this.newsItems.appendChild(
+                    document.createRange().createContextualFragment(
+                        this.generateCard(
+                            this.generateImage(currentNews.urlToImage),
+                            currentNews.title,
+                            currentNews.description,
+                            currentNews.url
+                        )
+                    )
+                )
+                
+            }
         }
     }
 
@@ -129,8 +147,15 @@ class News extends Url {
     }
 
     // CARD ITEMS GENERATION 
-    generateCard(){
-        
+    generateCard(img, title, description, sourceUrl){
+        return `<div class="card" style="width: 18rem; float: left; margin: 5px; height: 400px;">
+        ${ img }
+        <div class="card-body">
+          <h5 class="card-title">${ title }</h5>
+          <p class="card-text">${ description }</p>
+          <a href="${ sourceUrl }" class="btn btn-primary" target="_blank">source</a>
+        </div>
+      </div>`
     }
 
     generateImage(imgUrl = null){
