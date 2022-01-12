@@ -1,0 +1,19 @@
+.todoItem {
+    height: 35px;
+    margin: 2px;
+    border-bottom: 1px solid gray;
+}
+
+.todoItem .title {
+    display: block;
+    width: 70%;
+    float:left;
+}
+
+.todoItem button[type="button"] {
+    float: right;
+    display: block;
+    height: 35px;
+    width: 24px;
+    padding: 0 !important;
+}
