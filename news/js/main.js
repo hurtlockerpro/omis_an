@@ -128,7 +128,21 @@ class News extends Url {
         }
     }
 
+    // CARD ITEMS GENERATION 
+    generateCard(){
+        
+    }
 
+    generateImage(imgUrl = null){
+        //<img src="..." class="card-img-top" alt="..."></img>
+        if (imgUrl == null) return ''
+
+        let img = document.createElement('img')
+        img.classList.add('card-img-top')
+        img.src = imgUrl
+        
+        return img.outerHTML
+    }
 
 }
 

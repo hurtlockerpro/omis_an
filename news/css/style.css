@@ -1,0 +1,11 @@
+.carousel {
+    max-height: 350px;
+}
+
+.carousel-item {
+    max-height: 350px;
+}
+.carousel-item img {
+    /* max-height: 350px;*/
+    object-fit: cover;
+}
