@@ -34,18 +34,25 @@ class ToDo {
 
         for (let index = 0; index < this.todos.length; index++) {
             todoItems.appendChild(
-                this.generateTodoItem(this.todos[index].title, index)
+                this.generateTodoItem(this.todos[index], index)
             )
         }
     }
 
-    generateTodoItem(todoTitle, rowIndex){
+    generateTodoItem(todoObject, rowIndex){
         let item = document.createElement('div')
         item.classList.add('todoItem')
+        // if (typeof todoObject.reminder == 'undefined') 
+        if (todoObject.hasOwnProperty('reminder') == false)
+        {
+            // throw new Error('Required bla bla bla');
+            throw 'Required bla bla bla';
+        }
+        if (todoObject.reminder == true) item.classList.add('reminder')
 
         let title = document.createElement('div')
         title.classList.add('title')
-        title.innerText = todoTitle
+        title.innerText = todoObject.title
 
         let button = document.createElement('button')
         button.classList.add('btn', 'btn-danger')
@@ -68,7 +75,7 @@ class ToDo {
         let todoItem = new Object()
         todoItem.title = this.frmTodo.value
         todoItem.date = this.frmCalendar.value
-        todoItem.reminder = this.frmReminder.checked
+        //todoItem.reminder = this.frmReminder.checked
         
         this.todos.push(todoItem)
 
@@ -91,3 +98,30 @@ class ToDo {
 
 let clsTodos = new ToDo()
 clsTodos.showTodoItems()
+
+function checkTryCatch(y){
+
+    let x = 10
+    let arr = [100]
+    try {
+        nonExistentFunction();
+      } catch (error) {
+        console.error(error);
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+      } finally {
+          // always 
+          x = 0
+      }
+    try {
+        // logic where error can occure
+        let result = x / arr[1]
+        console.log( arr[1] )
+
+    } catch (err) {
+        throw 'Divided to zero'
+    }
+}
+
+checkTryCatch(0)
+
