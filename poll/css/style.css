@@ -1,0 +1,10 @@
+
+.active {
+    font-weight: bold;
+    background-color: aqua;
+}
+
+#quetionDetails {
+    margin: 5px;
+    padding: 5px;
+}
