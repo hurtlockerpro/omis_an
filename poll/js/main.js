@@ -133,55 +133,8 @@ class Questions {
                 break;
         }
 
-        this.showChart()
         console.debug(this.dbQuestions)
     }
-
-    showChart(){
-        let g = google.load('visualization', '1.0', {
-            'packages': ['bar']
-          });
-
-        // map data to chart 
-        let statData = [];
-        this.dbQuestions.forEach(question => {
-            statData.push(
-                [
-                    question.title,
-                    question.answersStat.yes,
-                    question.answersStat.no
-                ]
-            )
-        })
-
-        var data = g.visualization.DataTable();
-        data.addColumn('string', 'questions');
-        data.addColumn('number', 'Yes');
-        data.addColumn('number', 'No');
-        data.addRows(statData);
-        var options = {
-        width: 800,
-        chart: {
-            title: 'Nearby galaxies',
-            subtitle: 'distance on the left, brightness on the right'
-        },
-        bars: 'horizontal', // Required for Material Bar Charts.
-        series: {
-            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
-            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
-        },
-        axes: {
-            x: {
-            distance: {label: 'parsecs'}, // Bottom x-axis.
-            brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
-            }
-        }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart_div'));
-        chart.draw(data, options);
-    }
-
 
 }
 
@@ -211,3 +164,34 @@ document.getElementById('btnNext')
 
 
     newPoll.showQuestionDetails()
+
+function generateChart(){
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    // map data to chart 
+    let statData = [];
+    newPoll.dbQuestions.forEach(question => {
+        statData.push(
+            [
+                question.title,
+                question.answersStat.yes,
+                question.answersStat.no
+            ]
+        )
+    })
+
+    function drawStuff() {
+        var data = new google.visualization.arrayToDataTable(statData);
+        var options = {
+            width: 800,
+            chart: {
+              title: 'Poll answers'
+            },
+            bars: 'vertical', // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+}
