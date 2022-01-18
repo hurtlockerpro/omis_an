@@ -132,8 +132,41 @@ class Questions {
                 this.dbQuestions[this.currQuestionIndex()].answersStat.no += 1
                 break;
         }
-
+        this.drawChart()
         console.debug(this.dbQuestions)
+    }
+
+    drawChart()
+    {
+
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawStuff);
+    
+        // map data to chart 
+        let statData = [['questions', 'yes', 'no']];
+        newPoll.dbQuestions.forEach(question => {
+            statData.push(
+                [
+                    question.title,
+                    question.answersStat.yes,
+                    question.answersStat.no
+                ]
+            )
+        })
+    
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable(statData);
+            var options = {
+                width: 800,
+                chart: {
+                  title: 'Poll answers'
+                },
+                bars: 'vertical', // Required for Material Bar Charts.
+            };
+    
+            var chart = new google.charts.Bar(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
     }
 
 }
@@ -165,33 +198,5 @@ document.getElementById('btnNext')
 
     newPoll.showQuestionDetails()
 
-function generateChart(){
-    google.charts.load('current', {'packages':['bar']});
-    google.charts.setOnLoadCallback(drawStuff);
 
-    // map data to chart 
-    let statData = [];
-    newPoll.dbQuestions.forEach(question => {
-        statData.push(
-            [
-                question.title,
-                question.answersStat.yes,
-                question.answersStat.no
-            ]
-        )
-    })
-
-    function drawStuff() {
-        var data = new google.visualization.arrayToDataTable(statData);
-        var options = {
-            width: 800,
-            chart: {
-              title: 'Poll answers'
-            },
-            bars: 'vertical', // Required for Material Bar Charts.
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart_div'));
-        chart.draw(data, options);
-    }
-}
+   
