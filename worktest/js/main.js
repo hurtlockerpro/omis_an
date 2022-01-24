@@ -138,3 +138,149 @@ function runSlides(){
 }
 
 runSlides()
+
+
+/* restoran menu */ 
+
+let data = [
+    {
+        category: 'breakfast',
+        title: 'breakfast 1',
+        description: 'breakfast description 1',
+        price: 10,
+        image: 'https://picsum.photos/200/200?random=1'
+    },
+    {
+        category: 'breakfast',
+        title: 'breakfast 2',
+        description: 'breakfast description 2',
+        price: 20,
+        image: 'https://picsum.photos/200/200?random=1'
+    },
+    {
+        category: 'breakfast',
+        title: 'breakfast 3',
+        description: 'breakfast description 3',
+        price: 30,
+        image: 'https://picsum.photos/200/200?random=1'
+    },
+    {
+        category: 'lunch',
+        title: 'lunch 1',
+        description: 'lunch description 1',
+        price: 30,
+        image: 'https://picsum.photos/200/200?random=1'
+    },
+    {
+        category: 'lunch',
+        title: 'lunch 2',
+        description: 'lunch description 2',
+        price: 10,
+        image: 'https://picsum.photos/200/200?random=1'
+    }
+]
+
+function generateButton(options)
+{
+    let btn = document.createElement('button')
+    btn.classList.add('btn', 'btn-primary', 'm-1')
+    if (options.hasOwnProperty('title')) btn.innerText = options.title
+    // data-category [
+    /*   dataset: [{
+            name: '',
+            value: 'value'
+        }]
+    ]*/
+    if (options.dataset.length > 0)
+    {
+        options.dataset.forEach(dataset => {
+            btn.setAttribute('data-' + dataset.name, dataset.value)
+        })
+    }
+    btn.addEventListener('click', event => {
+        // step 1 : filter
+        let category = event.target.dataset.category
+        let cards = filterMenuCards(category)
+        // step 2. show cards
+
+        showMenuCards(cards)
+    })
+
+    return btn
+
+}
+
+function showMenuButtons(data){ // ['lunch', 'breakfast']
+    
+    data.forEach(menuItem => {
+        let options = {
+            title: menuItem, 
+            dataset: [
+                {
+                    name: 'category',
+                    value: menuItem
+                }
+            ]
+        }
+        menuItems.appendChild(generateButton(options))
+
+    })
+}
+
+function generateMenuCard(item){
+    return document.createRange().createContextualFragment(`
+        <div class="card m-3" style="max-width: 450px;float: left;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                <img src="${ item.image }" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${ item.title + ' - Price: ' +  item.price.toFixed(2) } EUR</h5>
+                    <p class="card-text">${ item.description }</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    `)
+}
+
+function filterMenuCards(category){
+    return data.filter(dataItem => dataItem.category == category)
+}
+
+
+let menuItems = document.getElementsByClassName('menuItems')
+if (typeof menuItems != 'undefined') menuItems = menuItems[0]
+
+let menuCards = document.getElementsByClassName('menuCards')
+if (typeof menuCards != 'undefined') menuCards = menuCards[0]
+
+
+function getMenuItems(){
+    let items = []
+    data.forEach(menuItem => {
+        if (!items.includes(menuItem.category))
+        {
+            items.push(menuItem.category)
+        }
+    })
+
+    return items
+}
+
+// generate menu buttons in html
+let menus = getMenuItems()
+showMenuButtons(menus)
+
+
+function showMenuCards(dataItems){
+
+    menuCards.innerHTML = ''
+
+    dataItems.forEach(menuItem => {
+        menuCards.appendChild(generateMenuCard(menuItem))
+    })
+}
+
+showMenuCards(data)
